@@ -39,28 +39,16 @@ from google import genai
 from dotenv import load_dotenv
 import os
 
-# ==========================================
+
 # LOAD ENVIRONMENT VARIABLES
-# ==========================================
 
 load_dotenv()
-
-# ==========================================
 # GET API KEY
-# ==========================================
 
 api_key = os.getenv("GEMINI_API_KEY")
-
-# ==========================================
 # CREATE CLIENT
-# ==========================================
-
 client = genai.Client(api_key=api_key)
-
-# ==========================================
 # SYSTEM PROMPT
-# ==========================================
-
 SYSTEM_PROMPT = """
 You are a helpful AI study assistant.
 
@@ -73,21 +61,14 @@ Your job is to:
 
 Always respond in a beginner-friendly way.
 """
-
-# ==========================================
 # START CHAT
-# ==========================================
-
 def start_chat():
 
     return {
         "history": []
     }
 
-# ==========================================
 # SEND MESSAGE
-# ==========================================
-
 def send_message(chat_session, user_message):
 
     # Save user message
@@ -106,9 +87,7 @@ def send_message(chat_session, user_message):
 
         full_prompt += f"{role}: {content}\n"
 
-    # ==========================================
     # GENERATE RESPONSE
-    # ==========================================
 
     response = client.models.generate_content(
        model="gemini-1.5-flash-001",
